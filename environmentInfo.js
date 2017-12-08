@@ -1,11 +1,11 @@
 
-import EnvironmentJson from '../../environment';
-
 let environment = [];
 let currentEnv = {};
 
 function _init() {
   if (environment.length === 0) {
+    let EnvironmentJson = require('../../environment');
+
     environment = EnvironmentJson.environment;
     currentEnv = environment.find((item) => {
       return item.type === EnvironmentJson.default;
