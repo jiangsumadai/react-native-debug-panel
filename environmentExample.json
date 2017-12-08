@@ -1,0 +1,13 @@
+{
+  "environment": [{
+    "type": "dev",
+    "url": "http://www.ea-sos.com/updateView"
+  }, {
+    "type": "test",
+    "url": "http://www.ea-sos.com/updateView"
+  }, {
+    "type": "pro",
+    "url": "http://www.ea-sos.com/updateView"
+  }],
+  "default": "dev"
+}
