@@ -1,5 +1,5 @@
 
-import EnvironmentJson from '../../../environment';
+import EnvironmentJson from '../../environment';
 
 let environment = [];
 let currentEnv = {};
