@@ -16,53 +16,33 @@ $ npm install react-native-debug-panel --save
 1.Copy environment.json to your project root directory, and edit the file.
 
 2.yourFile.js
-
+```js
 import React, { Component } from 'react';
-
 import { View, Text, TouchableOpacity } from 'react-native';
-
 import { DebugPanel, EnvironmentInfo } from 'react-native-debug-panel';
 
 export default class MyComponent extends Component {
-
   constructor (props) {
-    
     super(props);
 
     this.state = {
-
       debugPanelVisible: false,
-
     };
-
   }
 
   render() {
-
     return (
-
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-
         <TouchableOpacity activeOpacity={1.0} onPress={() => this.setState({ debugPanelVisible: true })}>
-
           <Text style={{ fontSize: 20, color: 'blue' }}>{`当前环境：\n${EnvironmentInfo.getCurrentEnv().url}\n点击切换`}</Text>
-
         </TouchableOpacity>
-
         <DebugPanel
-
           visible={this.state.debugPanelVisible}
-
           dismissCallback={() => this.setState({ debugPanelVisible: false })}
-
         />
-
       </View>
-
     );
-
   }
-  
 }
 ```
 
