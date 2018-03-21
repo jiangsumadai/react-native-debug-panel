@@ -1,6 +1,6 @@
 {
   "name": "react-native-debug-panel",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "debug panel",
   "main": "index.js",
   "scripts": {

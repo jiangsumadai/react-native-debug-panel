@@ -1,14 +1,27 @@
 
+import { AsyncStorage } from 'react-native';
+
 let environment = [];
 let currentEnv = {};
+let EnvironmentJson = require('../../environment');
+
+function setData() {
+  environment = EnvironmentJson.environment;
+  currentEnv = environment.find((item) => {
+    return item.type === EnvironmentJson.default;
+  });
+}
 
 function _init() {
   if (environment.length === 0) {
-    let EnvironmentJson = require('../../environment');
-
-    environment = EnvironmentJson.environment;
-    currentEnv = environment.find((item) => {
-      return item.type === EnvironmentJson.default;
+    AsyncStorage.getItem('environment', (err, result) => {
+      if (!err && result !== null) {
+        EnvironmentJson = JSON.parse(result);
+        setData();
+      } else {
+        AsyncStorage.setItem('environment', JSON.stringify(EnvironmentJson));
+        setData();
+      }
     });
   }
 }
@@ -24,6 +37,10 @@ export const EnvironmentInfo = {
   },
   setCurrentEnv(type) {
     currentEnv = environment.find((item) => {
+      if (item.type === type) {
+        EnvironmentJson = { ...EnvironmentJson, default: type };
+        AsyncStorage.setItem('environment', JSON.stringify(EnvironmentJson));
+      }
       return item.type === type;
     });
   },
