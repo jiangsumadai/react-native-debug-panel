@@ -27,6 +27,9 @@ function _init() {
 }
 
 export const EnvironmentInfo = {
+  init() {
+    _init();
+  },
   getEnv() {
     _init();
     return environment;
