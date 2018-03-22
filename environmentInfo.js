@@ -36,7 +36,7 @@ export const EnvironmentInfo = {
   },
   setEnv(data) {
     environment = data;
-    AsyncStorage.setItem('environment', JSON.stringify({ environment: data, type: currentEnv }));
+    AsyncStorage.setItem('environment', JSON.stringify({ environment: data, type: currentEnv.type }));
   },
   getCurrentEnv() {
     _init();
@@ -45,7 +45,7 @@ export const EnvironmentInfo = {
   setCurrentEnv(type) {
     currentEnv = environment.find((item) => {
       if (item.type === type) {
-        EnvironmentJson = { ...EnvironmentJson, default: type };
+        EnvironmentJson = { environment, default: type };
         AsyncStorage.setItem('environment', JSON.stringify(EnvironmentJson));
       }
       return item.type === type;
