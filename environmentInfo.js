@@ -34,6 +34,10 @@ export const EnvironmentInfo = {
     _init();
     return environment;
   },
+  setEnv(data) {
+    environment = data;
+    AsyncStorage.setItem('environment', JSON.stringify({ environment: data, type: currentEnv }));
+  },
   getCurrentEnv() {
     _init();
     return currentEnv;
