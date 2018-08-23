@@ -14,15 +14,16 @@ function setData() {
 
 function _init() {
   if (environment.length === 0) {
-    AsyncStorage.getItem('environment', (err, result) => {
-      if (!err && result !== null) {
-        EnvironmentJson = { ...JSON.parse(result), ...EnvironmentJson };
-        setData();
-      } else {
-        AsyncStorage.setItem('environment', JSON.stringify(EnvironmentJson));
-        setData();
-      }
-    });
+    setData();
+    // AsyncStorage.getItem('environment', (err, result) => {
+    //   if (!err && result !== null) {
+    //     EnvironmentJson = { ...JSON.parse(result), ...EnvironmentJson };
+    //     setData();
+    //   } else {
+    //     AsyncStorage.setItem('environment', JSON.stringify(EnvironmentJson));
+    //     setData();
+    //   }
+    // });
   }
 }
 
@@ -36,7 +37,7 @@ export const EnvironmentInfo = {
   },
   setEnv(data) {
     environment = data;
-    AsyncStorage.setItem('environment', JSON.stringify({ environment: data, type: currentEnv.type }));
+    // AsyncStorage.setItem('environment', JSON.stringify({ environment: data, type: currentEnv.type }));
   },
   getCurrentEnv() {
     _init();
@@ -46,7 +47,7 @@ export const EnvironmentInfo = {
     currentEnv = environment.find((item) => {
       if (item.type === type) {
         EnvironmentJson = { environment, default: type };
-        AsyncStorage.setItem('environment', JSON.stringify(EnvironmentJson));
+        // AsyncStorage.setItem('environment', JSON.stringify(EnvironmentJson));
       }
       return item.type === type;
     });
