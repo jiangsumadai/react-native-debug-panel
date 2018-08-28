@@ -16,7 +16,7 @@ function _init() {
   if (environment.length === 0) {
     AsyncStorage.getItem('environment', (err, result) => {
       if (!err && result !== null) {
-        EnvironmentJson = { ...JSON.parse(result), ...EnvironmentJson };
+        EnvironmentJson = { ...JSON.parse(result), ...EnvironmentJson, default: JSON.parse(result).default };
         setData();
       } else {
         AsyncStorage.setItem('environment', JSON.stringify(EnvironmentJson));
